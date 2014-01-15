@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean
+		class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+	<context:component-scan base-package="com.maciej.imiela.kursy.mvc" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:annotation-driven />
+	<!-- Most controllers will use the ControllerClassNameHandlerMapping above, 
+		but for the index controller we are using ParameterizableViewController, 
+		so we must define an explicit mapping for it. -->
+	<!-- <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
+		<property name="mappings"> <props> <prop key="index">indexController</prop> 
+		</props> </property> </bean> -->
+
+	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" 
+		p:prefix="/WEB-INF/views/" p:suffix=".jsp" /> <bean id="tilesViewResolver" 
+		class="org.springframework.web.servlet.view.tiles2.TilesViewResolver" /> 
+		<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" 
+		p:definitions="/WEB-INF/tiles-defs/templates.xml" /> -->
+
+	<!-- <mvc:view-controller path="/index.html" /> -->
+	<mvc:view-controller path="/info/about.html" />
+
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"
+		p:definitions="/WEB-INF/tiles-defs/templates.xml" />
+	<bean id="tilesViewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+		p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView" />
+
+	<!-- The index controller. -->
+	<!-- <bean name="indexController" class="org.springframework.web.servlet.mvc.ParameterizableViewController" 
+		p:viewName="index" /> -->
+	<bean id="homeController" class="com.maciej.imiela.kursy.mvc.HomeController">
+		<constructor-arg ref="myService" />
+	</bean>
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSource" />
+	</bean>
+	<bean id="kursyDAO" class="com.maciej.imiela.kursy.persistance.JdbcKursyDAO"
+		p:jdbcTemplate-ref="jdbcTemplate" />
+	<bean id="myService" class="com.maciej.imiela.kursy.service.MyService"
+		p:kursyDAO-ref="kursyDAO" />
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="org.postgresql.Driver" p:url="jdbc:postgresql://http://192.168.0.22:5432/Kurs"
+		p:username="admin" p:password="password123" />
+</beans>
