@@ -1,9 +1,12 @@
 package com.maciej.imiela.kursy.mvc;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,5 +31,27 @@ public class UserController {
 		model.addAttribute("user", u);
 		logger.info("{}.", u);
 		return "users/details";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, params = "new")
+	public String createNewUser(Model model) {
+		model.addAttribute("user", new User());
+		return "users/edit";
+	}
+
+	// @RequestMapping(value="/{username}", method=RequestMethod.GET)
+	// public String showSpitterProfile(@PathVariable String username,
+	// Model model) {
+	// model.addAttribute(service.getUser(username));
+	// return "spitters/view";
+	// }
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String saveNewUser(@Valid User user, BindingResult bResult) {
+		if (bResult.hasErrors()) {
+			return "users/edit";
+		}
+		service.saveUser(user);
+		return "redirect:/users/user?id=" + user.getId();
 	}
 }

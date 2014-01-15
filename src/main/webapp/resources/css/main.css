@@ -13,11 +13,11 @@ body {
 }
 
 #headerTitle {
-  font-size: 337%;
-  font-weight: normal;
-  position: relative;
-  margin: 0 0 0 4mm;
-  padding: 0.25ex 0;
+	font-size: 337%;
+	font-weight: normal;
+	position: relative;
+	margin: 0 0 0 4mm;
+	padding: 0.25ex 0;
 }
 
 #menu {
@@ -30,7 +30,7 @@ body {
 }
 
 #menu div {
-  border-bottom: 1px solid rgb(153,153,153);
+	border-bottom: 1px solid rgb(153, 153, 153);
 }
 
 #footer {
@@ -43,24 +43,24 @@ body {
 }
 
 #content {
-  color: black;
-  background-color: white;
-  text-align: justify;
-  line-height: 1.5em;
-  margin: 0 0 0 15em;
-  padding: 2mm 5mm 5mm 5mm;
+	color: black;
+	background-color: white;
+	text-align: justify;
+	line-height: 1.5em;
+	margin: 0 0 0 15em;
+	padding: 2mm 5mm 5mm 5mm;
 }
 
 #content p {
-  margin: 1em 1ex 2em 1ex;
-  padding: 0;
+	margin: 1em 1ex 2em 1ex;
+	padding: 0;
 }
 
 #content h1 {
-  color: white;
-  background-color: #488214;
-  font-size: 14pt;
-  font-weight: bold;
-  margin: 0 0 0 0;
-  padding: 0.5ex 0 0.5ex 1ex;
+	color: white;
+	background-color: #488214;
+	font-size: 14pt;
+	font-weight: bold;
+	margin: 0 0 0 0;
+	padding: 0.5ex 0 0.5ex 1ex;
 }

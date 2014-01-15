@@ -4,6 +4,9 @@
  */
 package com.maciej.imiela.kursy.domain;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 /**
  * 
  * @author Maciej
@@ -11,9 +14,11 @@ package com.maciej.imiela.kursy.domain;
 public class User {
 
 	private Long id;
+	@Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Username must contain only alphanumerlical sighns without a space.")
 	private String username;
+	@Size(min = 6, max = 20, message = "Password must have length between 6 to 20 sighns")
 	private String password;
-	private boolean verified;
+	private boolean verified = false;
 
 	public Long getId() {
 		return id;

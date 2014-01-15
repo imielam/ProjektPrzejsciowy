@@ -4,31 +4,38 @@
  */
 package com.maciej.imiela.kursy.service;
 
-import com.maciej.imiela.kursy.domain.User;
-import com.maciej.imiela.kursy.persistance.KursyDAO;
 import java.util.List;
+
 import javax.inject.Inject;
 
+import com.maciej.imiela.kursy.domain.User;
+import com.maciej.imiela.kursy.persistance.KursyDAO;
+
 /**
- *
+ * 
  * @author Maciej
  */
 public class MyService {
-    private KursyDAO kursyDAO;
+	private KursyDAO kursyDAO;
 
-    public KursyDAO getKursyDAO() {
-        return kursyDAO;
-    }
+	public KursyDAO getKursyDAO() {
+		return kursyDAO;
+	}
 
-    @Inject
-    public void setKursyDAO(KursyDAO kursyDAO) {
-        this.kursyDAO = kursyDAO;
-    }
-    
-    public List<User> getAllUsers(){
-        return null;
-    }
-    public User getUser(long id){
-        return kursyDAO.getUserByID(id);
-    }
+	@Inject
+	public void setKursyDAO(KursyDAO kursyDAO) {
+		this.kursyDAO = kursyDAO;
+	}
+
+	public List<User> getAllUsers() {
+		return null;
+	}
+
+	public User getUser(long id) {
+		return kursyDAO.getUserByID(id);
+	}
+
+	public void saveUser(User u) {
+		kursyDAO.addUser(u);
+	}
 }

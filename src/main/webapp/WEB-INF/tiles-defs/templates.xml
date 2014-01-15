@@ -29,4 +29,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/users/details.jsp" />
 	</definition>
 	
+	<definition name="users/edit" extends=".mainTemplate">
+		<put-attribute name="title" value="Edit User Data" type="string" />
+		<put-attribute name="body" value="/WEB-INF/views/users/details.jsp" />
+	</definition>
+	
 </tiles-definitions>
