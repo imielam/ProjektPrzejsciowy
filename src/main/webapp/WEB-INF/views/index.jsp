@@ -4,11 +4,11 @@
 
 <p>This is a simple placeholder for home page of the system</p>
 
-<s:url value="/user/id?={userID}" var="user_url">
+<s:url value="/users/user?id={userID}" var="user_url">
 	<s:param name="userID" value="${user.id}" />
 </s:url>
-<p>User's id: ${user.id}
+<p>Users:
 <ul>
-	<li>Login: ${user.username}, verified: ${user.verified}, address:  ${user_url}</li>
+	<li><a href="${ user_url }">Login: ${user.username}</a></li>
 </ul>
 </p>

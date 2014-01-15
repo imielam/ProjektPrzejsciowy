@@ -24,4 +24,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/info/about.jsp" />
 	</definition>
 	
+	<definition name="users/details" extends=".mainTemplate">
+		<put-attribute name="title" value="User's Details" type="string" />
+		<put-attribute name="body" value="/WEB-INF/views/users/details.jsp" />
+	</definition>
+	
 </tiles-definitions>
