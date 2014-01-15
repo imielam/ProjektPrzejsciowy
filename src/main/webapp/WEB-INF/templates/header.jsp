@@ -1,1 +1,1 @@
-Projekt Przej
+MA Thesis - Create lerning platform

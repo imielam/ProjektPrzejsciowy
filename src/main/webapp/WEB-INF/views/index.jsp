@@ -1,7 +1,14 @@
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%><%@taglib
+	uri="http://java.sun.com/jstl/core" prefix="c"%>
 <h1>Home</h1>
 
-<p>This is a simple tiles example.</p>
+<p>This is a simple placeholder for home page of the system</p>
 
-<p>The main body that you are reading is in <i>/WEB-INF/jsp/index.jsp</i> and the request for 
-<i>/index.html</i> is rendered using the <i>index</i> Tiles definition located in 
-<i>/WEB-INF/tiles-defs/templates.xml</i>.</p>
+<s:url value="/user/id?={userID}" var="user_url">
+	<s:param name="userID" value="${user.id}" />
+</s:url>
+<p>User's id: ${user.id}
+<ul>
+	<li>Login: ${user.username}, verified: ${user.verified}, address:  ${user_url}</li>
+</ul>
+</p>

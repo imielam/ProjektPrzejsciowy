@@ -53,6 +53,6 @@
 		p:kursyDAO-ref="kursyDAO" />
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		p:driverClassName="org.postgresql.Driver" p:url="jdbc:postgresql://http://192.168.0.22:5432/Kurs"
+		p:driverClassName="org.postgresql.Driver" p:url="jdbc:postgresql://192.168.0.22:5432/Kurs"
 		p:username="admin" p:password="password123" />
 </beans>
