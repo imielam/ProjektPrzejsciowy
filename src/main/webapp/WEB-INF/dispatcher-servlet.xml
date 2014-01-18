@@ -29,6 +29,8 @@
 
 	<!-- <mvc:view-controller path="/index.html" /> -->
 	<mvc:view-controller path="/info/about.html" />
+	<mvc:view-controller path="/error/404.html" />
+	<mvc:view-controller path="/error.html" />
 
 	<bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"

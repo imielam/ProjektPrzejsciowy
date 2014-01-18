@@ -34,4 +34,14 @@
 		<put-attribute name="body" value="/WEB-INF/views/users/details.jsp" />
 	</definition>
 	
+	<definition name="error/404" extends=".mainTemplate">
+		<put-attribute name="title" value="Error 404" type="string" />
+		<put-attribute name="body" value="/WEB-INF/views/error/404.jsp" />
+	</definition>
+	
+	<definition name="error" extends=".mainTemplate">
+		<put-attribute name="title" value="Page under development" type="string" />
+		<put-attribute name="body" value="/WEB-INF/views/error/in_progress.jsp" />
+	</definition>
+	
 </tiles-definitions>
