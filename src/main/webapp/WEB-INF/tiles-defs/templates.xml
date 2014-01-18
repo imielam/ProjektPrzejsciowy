@@ -16,7 +16,12 @@
  
 	<definition name="index" extends=".mainTemplate">
 		<put-attribute name="title" value="Home" type="string" />
-		<put-attribute name="body" value="/WEB-INF/views/index.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/default/index.jsp" />
+	</definition>
+	
+	<definition name="contact" extends=".mainTemplate">
+		<put-attribute name="title" value="Contact" type="string" />
+		<put-attribute name="body" value="/WEB-INF/views/default/contact.jsp" />
 	</definition>
 
 	<definition name="info/about" extends=".mainTemplate">
@@ -31,7 +36,7 @@
 	
 	<definition name="users/edit" extends=".mainTemplate">
 		<put-attribute name="title" value="Edit User Data" type="string" />
-		<put-attribute name="body" value="/WEB-INF/views/users/details.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/users/edit.jsp" />
 	</definition>
 	
 	<definition name="error/404" extends=".mainTemplate">

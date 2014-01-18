@@ -42,8 +42,9 @@
 	<!-- The index controller. -->
 	<!-- <bean name="indexController" class="org.springframework.web.servlet.mvc.ParameterizableViewController" 
 		p:viewName="index" /> -->
-	<bean id="homeController" class="com.maciej.imiela.kursy.mvc.HomeController">
+	<bean id="guestController" class="com.maciej.imiela.kursy.mvc.GuestController">
 		<constructor-arg ref="myService" />
+		<constructor-arg ref="mailSender" />
 	</bean>
 	<bean id="userController" class="com.maciej.imiela.kursy.mvc.UserController">
 		<constructor-arg ref="myService" />
@@ -62,5 +63,20 @@
 		p:username="admin" p:password="password123" />
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host"><value>smtp.gmail.com</value></property>
+        <property name="port"><value>587</value></property>
+        <property name="protocol"><value>smtp</value></property>
+        <property name="username"><value>maciej.imiela@gmail.com</value></property>
+        <property name="password"><value>tojestdlugiehasloprawieniedozlamania</value></property>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.quitwait">false</prop>
+            </props>
+        </property>
+	</bean>
 
 </beans>

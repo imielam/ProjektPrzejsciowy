@@ -10,7 +10,7 @@
 	<a href="<c:url value="/info/about.html"/>">About</a>
 </p>
 <p>
-	<a href="<c:url value="/error.html"/>">Contact</a>
+	<a href="<c:url value="/contact"/>">Contact</a>
 </p>
 <p>
 	<a href="<c:url value="#"/>">Courses</a>
