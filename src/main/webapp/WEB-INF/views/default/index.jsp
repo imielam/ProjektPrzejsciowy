@@ -1,8 +1,7 @@
-<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%><%@taglib
-	uri="http://java.sun.com/jstl/core" prefix="c"%><%@taglib
-	uri="http://java.sun.com/jstl/core_rt" prefix="c_rt"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <h1>Home</h1>
-<c_rt:if test="${message ne ''}"><div class="errorMessage">${message}</div></c_rt:if>
+<%-- <s:eval expression='message != ""' var="errorTest"><div class="errorMessage">${message}</div></s:eval>
+<c:if test="${message ne ''}"><div class="errorMessage">${message}</div></c_rt:if> --%>
 
 <p>This is a simple placeholder for home page of the system</p>
 

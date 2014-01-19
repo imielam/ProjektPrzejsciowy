@@ -1,11 +1,13 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><%@taglib
+	uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 <html>
 <head>
 <title><tiles:getAsString name="title" /></title>
+<spring:url value="/resources/css/main.css" var="myCss"/>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/main.css"/>" />
+	href="${myCss}" />
 </head>
 <body>
 	<div id="header">
@@ -21,6 +23,6 @@
 	</div>
 	<div id="footer">
 		<tiles:insertAttribute name="footer" />
-	</div>
+	</div> 
 </body>
 </html>
