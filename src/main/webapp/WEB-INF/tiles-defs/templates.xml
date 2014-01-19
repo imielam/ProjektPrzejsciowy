@@ -24,9 +24,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/default/contact.jsp" />
 	</definition>
 
-	<definition name="info/about" extends=".mainTemplate">
+	<definition name="about" extends=".mainTemplate">
 		<put-attribute name="title" value="About" type="string" />
-		<put-attribute name="body" value="/WEB-INF/views/info/about.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/default/about.jsp" />
 	</definition>
 	
 	<definition name="users/details" extends=".mainTemplate">

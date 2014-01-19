@@ -68,6 +68,11 @@ public class GuestController {
 	public String pageNotFound(Model model) {
 		return "error/404";
 	}
+        
+        @RequestMapping(value = { "/about" }, method = RequestMethod.GET)
+	public String displayAbout(Model model) {
+		return "about";
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String saveNewUser(@Valid ContactMessage contactMessage,
