@@ -226,11 +226,11 @@
 		<!-- <dependency> <groupId>javax</groupId> <artifactId>javaee-web-api</artifactId> 
 			<version>7.0</version> </dependency> -->
 		<!-- The JSR-303 Bean Validation API library. -->
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
-		</dependency>
+                <!--		<dependency>
+                        <groupId>javax.validation</groupId>
+                        <artifactId>validation-api</artifactId>
+                        <version>1.0.0.GA</version>
+                </dependency>-->
 
 		<dependency>
 			<groupId>javax.mail</groupId>

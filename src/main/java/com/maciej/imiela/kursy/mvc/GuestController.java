@@ -58,6 +58,16 @@ public class GuestController {
 		model.addAttribute("contactMessage", new ContactMessage());
 		return "contact";
 	}
+        
+        @RequestMapping(value = { "/error" }, method = RequestMethod.GET)
+	public String pageUnderConstruction(Model model) {
+		return "error";
+	}
+        
+        @RequestMapping(value = { "/error/404" }, method = RequestMethod.GET)
+	public String pageNotFound(Model model) {
+		return "error/404";
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String saveNewUser(@Valid ContactMessage contactMessage,
