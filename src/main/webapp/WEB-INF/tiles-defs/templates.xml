@@ -49,6 +49,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/error/in_progress.jsp" />
 	</definition>
         
+        <definition name="error/access" extends=".mainTemplate">
+		<put-attribute name="title" value="Access Denied" type="string" />
+		<put-attribute name="body" value="/WEB-INF/views/error/access_denied.jsp" />
+	</definition>
+        
         <definition name="login" extends=".mainTemplate">
 		<put-attribute name="title" value="Sign in" type="string" />
 		<put-attribute name="body" value="/WEB-INF/views/default/login.jsp" />
