@@ -48,5 +48,10 @@
 		<put-attribute name="title" value="Page under development" type="string" />
 		<put-attribute name="body" value="/WEB-INF/views/error/in_progress.jsp" />
 	</definition>
+        
+        <definition name="login" extends=".mainTemplate">
+		<put-attribute name="title" value="Sign in" type="string" />
+		<put-attribute name="body" value="/WEB-INF/views/default/login.jsp" />
+	</definition>
 	
 </tiles-definitions>

@@ -74,7 +74,7 @@ public class GuestController {
 		return "about";
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = { "/contact" }, method = RequestMethod.POST)
 	public String saveNewUser(@Valid ContactMessage contactMessage,
 			BindingResult bResult) {
 		if (bResult.hasErrors()) {
@@ -94,5 +94,10 @@ public class GuestController {
 			return "redirect:/home?message=" + FAIL_MESSAGE;
 		}
 		return "redirect:/home?message=" + SUCCES_MESSAGE;
+	}
+        
+        @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	public String displayLogInForm(Model model) {
+		return "login";
 	}
 }
