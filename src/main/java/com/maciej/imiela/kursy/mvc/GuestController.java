@@ -28,6 +28,7 @@ import com.maciej.imiela.kursy.service.MyService;
  */
 @Controller
 public class GuestController {
+        public static final String SUCCES_REGISTER = "Your account has been created!";
 	public static final String SUCCES_MESSAGE = "Message was sent!";
 	public static final String FAIL_MESSAGE = "Message wasn't sent due to unexpected error, please try again!";
 
@@ -113,6 +114,7 @@ public class GuestController {
 			return "register";
 		}
 		service.saveUser(user);
-		return "redirect:/users/user?id=" + user.getId();
+//		return "redirect:/users/user?id=" + user.getId();
+                return "redirect:/home?message=" + SUCCES_REGISTER;
 	}
 }
