@@ -1,1 +1,1 @@
-@Copyright 2008-2014
+Created by Maciej Imiela, @Copyright 2014

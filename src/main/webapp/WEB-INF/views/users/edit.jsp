@@ -64,14 +64,3 @@
 		</fieldset>
 	</sf:form>
 </div>
-
-
-
-
-
-<p>User's id: ${user.id}
-<ul>
-	<li>Login: ${user.username}</li>
-	<li>Verified: ${user.verified}</li>
-</ul>
-</p>

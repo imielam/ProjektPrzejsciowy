@@ -54,7 +54,7 @@ public class GuestController {
 	}
 
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
-	public String createNewUser(Model model) {
+	public String createContactMessage(Model model) {
 		model.addAttribute("contactMessage", new ContactMessage());
 		return "contact";
 	}
@@ -99,5 +99,20 @@ public class GuestController {
         @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String displayLogInForm(Model model) {
 		return "login";
+	}
+        
+        @RequestMapping(value = { "/register" }, method = RequestMethod.GET)
+	public String createNewUser(Model model) {
+		model.addAttribute("user", new User());
+		return "register";
+	}
+        
+        @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
+	public String saveNewUser(@Valid User user, BindingResult bResult) {
+		if (bResult.hasErrors()) {
+			return "register";
+		}
+		service.saveUser(user);
+		return "redirect:/users/user?id=" + user.getId();
 	}
 }

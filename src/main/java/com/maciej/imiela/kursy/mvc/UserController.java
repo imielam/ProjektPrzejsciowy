@@ -33,25 +33,18 @@ public class UserController {
 		return "users/details";
 	}
 
-	@RequestMapping(method = RequestMethod.GET, params = "new")
-	public String createNewUser(Model model) {
-		model.addAttribute("user", new User());
-		return "users/edit";
-	}
-
-	// @RequestMapping(value="/{username}", method=RequestMethod.GET)
-	// public String showSpitterProfile(@PathVariable String username,
-	// Model model) {
-	// model.addAttribute(service.getUser(username));
-	// return "spitters/view";
-	// }
-
-	@RequestMapping(method = RequestMethod.POST)
-	public String saveNewUser(@Valid User user, BindingResult bResult) {
-		if (bResult.hasErrors()) {
-			return "users/edit";
-		}
-		service.saveUser(user);
-		return "redirect:/users/user?id=" + user.getId();
-	}
+//	@RequestMapping(method = RequestMethod.GET, params = "new")
+//	public String createNewUser(Model model) {
+//		model.addAttribute("user", new User());
+//		return "users/edit";
+//	}
+//
+//	@RequestMapping(method = RequestMethod.POST)
+//	public String saveNewUser(@Valid User user, BindingResult bResult) {
+//		if (bResult.hasErrors()) {
+//			return "users/edit";
+//		}
+//		service.saveUser(user);
+//		return "redirect:/users/user?id=" + user.getId();
+//	}
 }
