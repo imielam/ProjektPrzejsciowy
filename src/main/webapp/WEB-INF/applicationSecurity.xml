@@ -15,7 +15,8 @@
         <http-basic/>
         <logout/>
         <intercept-url pattern="/login" />
-        <intercept-url pattern="/users/**" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/users/**" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/**" access="permitAll"/>
         <!--requires-channel="https"-->
     </http>
@@ -29,7 +30,7 @@
                        users-by-username-query=
           'select login, haslo, zweryfikowany FROM "DaneLogowania" WHERE "login"=?'
                        authorities-by-username-query=
-          "select login,'ROLE_USER' from &quot;DaneLogowania&quot; where login=?" />
+          'Select * from "login_role_view" where login=?' />
     
     <beans:bean id="dataSource"
                 class="org.springframework.jdbc.datasource.DriverManagerDataSource"

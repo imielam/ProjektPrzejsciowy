@@ -45,6 +45,9 @@
 </p>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
     <p>
-        <a href="<c:url value="/error"/>">Admin</a>
-    </p>
+        <a href="<c:url value="#"/>">Admin</a>
+    <ul>
+        <li><a href="<c:url value="/admin/users"/>">Users' list</a></li>
+    </ul>
+</p>
 </sec:authorize>

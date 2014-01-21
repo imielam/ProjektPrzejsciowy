@@ -29,7 +29,7 @@ public class MyService {
 	}
 
 	public List<User> getAllUsers() {
-		return null;
+		return kursyDAO.getAllUsers();
 	}
 
 	public User getUser(long id) {

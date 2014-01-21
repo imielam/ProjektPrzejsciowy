@@ -50,11 +50,11 @@ public class GuestController {
     public String showHomePage(
             @RequestParam(value = "message", required = false, defaultValue = "") String message,
             Model model) {
-        User u = service.getUser(1);
-        logger.info(message);
+//        User u = service.getUser(1);
+//        logger.info(message);
         model.addAttribute("message", message);
-        model.addAttribute("user", u);
-        logger.info("{}.", u);
+//        model.addAttribute("user", u);
+//        logger.info("{}.", u);
         return "index";
     }
 

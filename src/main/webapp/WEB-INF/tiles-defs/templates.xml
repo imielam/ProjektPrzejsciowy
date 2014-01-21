@@ -68,5 +68,10 @@
 		<put-attribute name="title" value="Courses" type="string" />
 		<put-attribute name="body" value="/WEB-INF/views/courses/listDescription.jsp" />
 	</definition>
+        
+        <definition name="admin/users" extends=".mainTemplate">
+		<put-attribute name="title" value="User's list" type="string" />
+		<put-attribute name="body" value="/WEB-INF/views/users/listUsers.jsp" />
+	</definition>
 	
 </tiles-definitions>

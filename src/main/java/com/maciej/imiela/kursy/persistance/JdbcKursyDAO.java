@@ -33,7 +33,7 @@ public class JdbcKursyDAO implements KursyDAO {
     }
     private static final String SQL_INSERT_USER = "INSERT INTO \"DaneLogowania\" (id, login, haslo, zweryfikowany) VALUES (:id, :user, :password, :ver);";
     private static final String SQL_SELECT_USER = "SELECT * FROM \"DaneLogowania\" WHERE id = :id;";
-    private static final String SQL_SELECT_ALL_USER = "SELECT * FROM \"DaneLogowania\";";
+    private static final String SQL_SELECT_ALL_USER = "SELECT * FROM \"DaneLogowania\" order by \"id\";";
     private static final String SQL_SELECT_ALL_COURSES = "SELECT * FROM \"TypKursu\";";
 
     @Override
@@ -68,10 +68,10 @@ public class JdbcKursyDAO implements KursyDAO {
             @Override
             public User mapRow(ResultSet rs, int i) throws SQLException {
                 User u = new User();
-                u.setId(rs.getLong(1));
-                u.setUsername(rs.getString(2));
-                u.setPassword(rs.getString(3));
-                u.setVerified(Boolean.parseBoolean(rs.getString(4)));
+                u.setId(rs.getLong("id"));
+                u.setUsername(rs.getString("login"));
+                u.setPassword(rs.getString("haslo"));
+                u.setVerified(rs.getBoolean("zweryfikowany"));
                 return u;
             }
         });
