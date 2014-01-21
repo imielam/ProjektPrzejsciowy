@@ -19,102 +19,114 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.maciej.imiela.kursy.domain.ContactMessage;
+import com.maciej.imiela.kursy.domain.Course;
 import com.maciej.imiela.kursy.domain.User;
 import com.maciej.imiela.kursy.service.MyService;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
- * 
+ *
  * @author Maciej
  */
 @Controller
 public class GuestController {
-        public static final String SUCCES_REGISTER = "Your account has been created!";
-	public static final String SUCCES_MESSAGE = "Message was sent!";
-	public static final String FAIL_MESSAGE = "Message wasn't sent due to unexpected error, please try again!";
 
-	private MyService service;
-	private MailSender mailSender;
-	private static final Logger logger = LoggerFactory
-			.getLogger(GuestController.class);
+    public static final String SUCCES_REGISTER = "Your account has been created!";
+    public static final String SUCCES_MESSAGE = "Message was sent!";
+    public static final String FAIL_MESSAGE = "Message wasn't sent due to unexpected error, please try again!";
+    private MyService service;
+    private MailSender mailSender;
+    private static final Logger logger = LoggerFactory
+            .getLogger(GuestController.class);
 
-	public GuestController(MyService service, MailSender mailSender) {
-		this.service = service;
-		this.mailSender = mailSender;
-	}
+    public GuestController(MyService service, MailSender mailSender) {
+        this.service = service;
+        this.mailSender = mailSender;
+    }
 
-	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
-	public String showHomePage(
-			@RequestParam(value = "message", required = false, defaultValue = "") String message,
-			Model model) {
-		User u = service.getUser(1);
-		logger.info(message);
-		model.addAttribute("message", message);
-		model.addAttribute("user", u);
-		logger.info("{}.", u);
-		return "index";
-	}
+    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
+    public String showHomePage(
+            @RequestParam(value = "message", required = false, defaultValue = "") String message,
+            Model model) {
+        User u = service.getUser(1);
+        logger.info(message);
+        model.addAttribute("message", message);
+        model.addAttribute("user", u);
+        logger.info("{}.", u);
+        return "index";
+    }
 
-	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
-	public String createContactMessage(Model model) {
-		model.addAttribute("contactMessage", new ContactMessage());
-		return "contact";
-	}
-        
-        @RequestMapping(value = { "/error" }, method = RequestMethod.GET)
-	public String pageUnderConstruction(Model model) {
-		return "error";
-	}
-        
-        @RequestMapping(value = { "/error/404" }, method = RequestMethod.GET)
-	public String pageNotFound(Model model) {
-		return "error/404";
-	}
-        
-        @RequestMapping(value = { "/about" }, method = RequestMethod.GET)
-	public String displayAbout(Model model) {
-		return "about";
-	}
+    @RequestMapping(value = {"/contact"}, method = RequestMethod.GET)
+    public String createContactMessage(Model model) {
+        model.addAttribute("contactMessage", new ContactMessage());
+        return "contact";
+    }
 
-	@RequestMapping(value = { "/contact" }, method = RequestMethod.POST)
-	public String saveNewUser(@Valid ContactMessage contactMessage,
-			BindingResult bResult) {
-		if (bResult.hasErrors()) {
-			return "contact";
-		}
+    @RequestMapping(value = {"/error"}, method = RequestMethod.GET)
+    public String pageUnderConstruction(Model model) {
+        return "error";
+    }
 
-		SimpleMailMessage msg = new SimpleMailMessage();
-		msg.setTo("maciej.imiela@gmail.com");
-		msg.setText(contactMessage.getMessage());
-		msg.setSubject("Please contact me, as soon as you can: "
-				+ contactMessage.getEmail());
-		try {
-			mailSender.send(msg);
-		} catch (MailException ex) {
-			// log it and go on
-			logger.error(ex.getMessage());
-			return "redirect:/home?message=" + FAIL_MESSAGE;
-		}
-		return "redirect:/home?message=" + SUCCES_MESSAGE;
-	}
-        
-        @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public String displayLogInForm(Model model) {
-		return "login";
-	}
-        
-        @RequestMapping(value = { "/register" }, method = RequestMethod.GET)
-	public String createNewUser(Model model) {
-		model.addAttribute("user", new User());
-		return "register";
-	}
-        
-        @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
-	public String saveNewUser(@Valid User user, BindingResult bResult) {
-		if (bResult.hasErrors()) {
-			return "register";
-		}
-		service.saveUser(user);
+    @RequestMapping(value = {"/error/404"}, method = RequestMethod.GET)
+    public String pageNotFound(Model model) {
+        return "error/404";
+    }
+
+    @RequestMapping(value = {"/about"}, method = RequestMethod.GET)
+    public String displayAbout(Model model) {
+        return "about";
+    }
+
+    @RequestMapping(value = {"/contact"}, method = RequestMethod.POST)
+    public String saveNewUser(@Valid ContactMessage contactMessage,
+            BindingResult bResult) {
+        if (bResult.hasErrors()) {
+            return "contact";
+        }
+
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo("maciej.imiela@gmail.com");
+        msg.setText(contactMessage.getMessage());
+        msg.setSubject("Please contact me, as soon as you can: "
+                + contactMessage.getEmail());
+        try {
+            mailSender.send(msg);
+        } catch (MailException ex) {
+            // log it and go on
+            logger.error(ex.getMessage());
+            return "redirect:/home?message=" + FAIL_MESSAGE;
+        }
+        return "redirect:/home?message=" + SUCCES_MESSAGE;
+    }
+
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public String displayLogInForm(Model model) {
+        return "login";
+    }
+
+    @RequestMapping(value = {"/register"}, method = RequestMethod.GET)
+    public String createNewUser(Model model) {
+        model.addAttribute("user", new User());
+        return "register";
+    }
+
+    @RequestMapping(value = {"/register"}, method = RequestMethod.POST)
+    public String saveNewUser(@Valid User user, BindingResult bResult) {
+        if (bResult.hasErrors()) {
+            return "register";
+        }
+        service.saveUser(user);
 //		return "redirect:/users/user?id=" + user.getId();
-                return "redirect:/home?message=" + SUCCES_REGISTER;
-	}
+        return "redirect:/home?message=" + SUCCES_REGISTER;
+    }
+
+    @RequestMapping(value = {"/course/list"})
+    public String displayCoursesList(Model model) {
+        final List<Course> allCourses = service.getAllCourses();
+        logger.info(Arrays.toString(allCourses.toArray()));
+        model.addAttribute("courses", allCourses);
+        return "course/list";
+    }
 }

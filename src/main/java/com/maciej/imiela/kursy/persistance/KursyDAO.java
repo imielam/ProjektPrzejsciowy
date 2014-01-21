@@ -4,6 +4,7 @@
  */
 package com.maciej.imiela.kursy.persistance;
 
+import com.maciej.imiela.kursy.domain.Course;
 import com.maciej.imiela.kursy.domain.User;
 import java.util.List;
 
@@ -15,4 +16,5 @@ public interface KursyDAO {
     void addUser(User u);
     User getUserByID(long id);
     List<User> getAllUsers();
+    List<Course> getAllCourses();
 }

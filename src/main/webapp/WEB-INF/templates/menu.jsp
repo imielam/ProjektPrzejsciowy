@@ -26,7 +26,7 @@
 <p>
     <a href="<c:url value="#"/>">Courses</a>
 <ul>
-    <li><a href="<c:url value="/error"/>">Description</a></li>
+    <li><a href="<c:url value="/course/list"/>">Description</a></li>
     <li><a href="<c:url value="/error"/>">Currently</a></li>
         <sec:authorize access="hasRole('ROLE_USER')">
         <li><a href="<c:url value="/error"/>">Sign</a></li>

@@ -4,6 +4,7 @@
  */
 package com.maciej.imiela.kursy.service;
 
+import com.maciej.imiela.kursy.domain.Course;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -37,5 +38,9 @@ public class MyService {
 
 	public void saveUser(User u) {
 		kursyDAO.addUser(u);
+	}
+        
+        public List<Course> getAllCourses() {
+		return kursyDAO.getAllCourses();
 	}
 }
