@@ -16,11 +16,11 @@
     <mvc:annotation-driven />
 
     <bean id="tilesConfigurer"
-          class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"
+          class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"
           p:definitions="/WEB-INF/tiles-defs/templates.xml" />
     <bean id="tilesViewResolver"
           class="org.springframework.web.servlet.view.UrlBasedViewResolver"
-          p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView" />
+          p:viewClass="org.springframework.web.servlet.view.tiles3.TilesView" />
 
     <bean id="guestController" class="com.maciej.imiela.kursy.mvc.GuestController">
         <constructor-arg ref="myService" />

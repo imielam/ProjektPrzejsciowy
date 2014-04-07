@@ -7,7 +7,7 @@
             ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
         </div>
     </c:if>
-    <form method="post" class="signin" action="<c:url value='j_spring_security_check' />"
+    <form method="post" class="signin" action="<c:url value='j_spring_security_check' />">
 
         <fieldset>
             <table cellspacing="0">
